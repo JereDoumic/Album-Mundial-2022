@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Clases.Menuu">
+  <grid id="27dc6" binding="contentPanelMenu" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <alignmentX value="0.5"/>
+      <preferredSize width="1600" height="900"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="5114" binding="PanelMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="40fb4" class="javax.swing.JButton" binding="verAlbumButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <alignmentX value="0.5"/>
+              <borderPainted value="true"/>
+              <hideActionText value="false"/>
+              <horizontalTextPosition value="11"/>
+              <iconTextGap value="4"/>
+              <inheritsPopupMenu value="false"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value="Ver Album"/>
+              <verticalAlignment value="0"/>
+              <verticalTextPosition value="0"/>
+              <visible value="true"/>
+            </properties>
+          </component>
+          <component id="b8262" class="javax.swing.JButton" binding="abrirSobreButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="250" height="250"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Abrir Sobre"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
