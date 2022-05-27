@@ -5,19 +5,11 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Usuario implements MetodosDeUsuario{
+public class Usuario extends JFrame{
+
     LinkedList<Jugador>jugadores = new LinkedList<>();
     LinkedList<Jugador>jugadoresRepetidos = new LinkedList<>();
     private String tipoDeUsuario;  //Basic, Silver o Gold
-    public int contadorDeFiguritas;
-
-    public int getContadorDeFiguritas() {
-        return contadorDeFiguritas;
-    }
-
-    public void setContadorDeFiguritas(int contadorDeFiguritas) {
-        this.contadorDeFiguritas = contadorDeFiguritas;
-    }
 
     public String getTipoDeUsuario() {
         return tipoDeUsuario;
