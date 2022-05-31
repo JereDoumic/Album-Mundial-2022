@@ -7,17 +7,21 @@ public final class Sistema {
 
 
     //regionJugadoresArgentina
+    public static Jugador EscudoArgentina = new Jugador("EscudoArgentina", "EscudoArgentina", "Argentina");
     public static Jugador Messi = new Jugador("Lionel Andres", "Messi", "Argentina");
     public static Jugador DePaul = new Jugador("Rodrigo", "DePaul", "Argentina");
     public static Jugador Paredes = new Jugador("Leandro", "Paredes", "Argentina");
     public static Jugador Otamendi = new Jugador("Nicolas", "Otamendi", "Argentina");
+    public static Jugador DiMaria = new Jugador("Angel", "DiMaria", "Argentina");
     //endregion
 
     //regionJugadoresUruguay
+    public static Jugador EscudoUruguay = new Jugador("EscudoUruguay", "EscudoUruguay", "Uruguay");
     public static Jugador Suarez = new Jugador("Luis", "Suarez", "Uruguay");
     public static Jugador Cavani = new Jugador("Edinson", "Cavani", "Uruguay");
     public static Jugador Muslera = new Jugador("Fernando", "Muslera",  "Uruguay");
     public static Jugador Gimenez = new Jugador("Jose", "Gimenez",  "Uruguay");
+    public static Jugador Godin = new Jugador("Diego", "Godin",  "Uruguay");
     //endregion
 
 
@@ -44,6 +48,8 @@ public final class Sistema {
         ARGENTINA.setJugadores(DePaul);
         ARGENTINA.setJugadores(Paredes);
         ARGENTINA.setJugadores(Otamendi);
+        ARGENTINA.setJugadores(DiMaria);
+        ARGENTINA.setJugadores(EscudoArgentina);
     }
 
     public void cargarJugadoresUruguay(){
@@ -51,6 +57,8 @@ public final class Sistema {
         URUGUAY.setJugadores(Cavani);
         URUGUAY.setJugadores(Muslera);
         URUGUAY.setJugadores(Gimenez);
+        URUGUAY.setJugadores(Godin);
+        URUGUAY.setJugadores(EscudoUruguay);
     }
 
 

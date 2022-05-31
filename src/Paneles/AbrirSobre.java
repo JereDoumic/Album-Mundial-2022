@@ -74,10 +74,9 @@ public class AbrirSobre {
         abrirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(usuario.getContadorDeFiguritas() < 20){
+                if(usuario.getContadorDeFiguritas() < 5){
                     Jugador[] aux = usuario.abrirSobre(4);
 
-                    System.out.println(aux[0]);
                     ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
                     label1.setIcon(imagen1);
 
@@ -92,22 +91,22 @@ public class AbrirSobre {
                     System.out.println(usuario.getContadorDeFiguritas());
 
                 }
-                if(usuario.getContadorDeFiguritas() >= 20 && usuario.getContadorDeFiguritas() < 40){
+                if(usuario.getContadorDeFiguritas() >= 5 && usuario.getContadorDeFiguritas() < 40){
                     Jugador[] aux = usuario.abrirSobre(5);
 
-                    ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getApellido() + ".jpg");
+                    ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
                     label1.setIcon(imagen1);
 
-                    ImageIcon imagen2 = new ImageIcon("Imagenes\\" + aux[1].getApellido() + ".jpg");
+                    ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
                     label2.setIcon(imagen2);
 
-                    ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getApellido() + ".jpg");
+                    ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
                     label3.setIcon(imagen3);
 
-                    ImageIcon imagen4 = new ImageIcon("Imagenes\\" + aux[3].getApellido() + ".jpg");
+                    ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
                     label4.setIcon(imagen4);
 
-                    ImageIcon imagen5 = new ImageIcon("Imagenes\\" + aux[4].getApellido() + ".jpg");
+                    ImageIcon imagen5 = new ImageIcon("Imagenes\\" +  aux[4].getPais() + "\\" + aux[4].getApellido() + "2.jpg");
                     label5.setIcon(imagen5);
                     System.out.println(usuario.getContadorDeFiguritas());
                 }

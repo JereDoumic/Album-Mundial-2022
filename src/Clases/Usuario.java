@@ -58,7 +58,7 @@ public class Usuario implements MetodosDeUsuario{
         for(int a = 0; a < validos; a++){
             Random rand = new Random();
             i = rand.nextInt(0, 2);
-            j = rand.nextInt(0, 4);
+            j = rand.nextInt(0, 6);
             aux[a] = Sistema.paises[i].getJugadores(j);
             if(!buscarJugador(Sistema.paises[i].getJugadores(j)))
                 this.setContadorDeFiguritas(this.getContadorDeFiguritas() + 1);
