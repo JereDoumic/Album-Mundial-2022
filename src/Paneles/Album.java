@@ -16,6 +16,9 @@ import java.io.IOException;
 public class Album extends Component {
     private JPanel contentPanelAlbum;
     private JPanel panelAlbum;
+    private JButton anteriorButton;
+    private JButton siguienteButton;
+    private JButton volverButton;
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -24,6 +27,7 @@ public class Album extends Component {
     public Album(Usuario usuario) {
         fondo();
         this.usuario = usuario;
+        fondoBotonVolver();
     }
 
     public JPanel getContentPanelAlbum() {
@@ -52,18 +56,40 @@ public class Album extends Component {
         }
     }
 
+    public void fondoBotonVolver() {
+        try {
+            Menuu.fondoPanel fondo = new Menuu.fondoPanel(ImageIO.read(new File("Imagenes\\volver.jpg")));
+            volverButton.setBorder(fondo);
+        } catch (
+                IOException ex) {
+            JOptionPane.showMessageDialog(volverButton, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void actionVolverAlMenu(JFrame f, Menuu menu){
+        volverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setContentPane(menu.getContentPanelMenu());
+                f.setVisible(true);
+            }
+        });
+    }
+
     public void completarArgentina(){
         ImageIcon imagen1 = new ImageIcon("Imagenes\\Messi.jpg");
         label1.setIcon(imagen1);
-        label1.setVisible(usuario.buscarJugador(Sistema.Messi));
+        //label1.setBounds(20, 20, 20, 20);
+        //label1.setVisible(usuario.buscarJugador(Sistema.Messi));
 
         ImageIcon imagen2 = new ImageIcon("Imagenes\\DePaul.jpg");
         label2.setIcon(imagen2);
-        label2.setVisible(usuario.buscarJugador(Sistema.DePaul));
+        //label2.setVisible(usuario.buscarJugador(Sistema.DePaul));
 
         ImageIcon imagen3 = new ImageIcon("Imagenes\\Paredes.jpg");
         label3.setIcon(imagen3);
-        label3.setVisible(usuario.buscarJugador(Sistema.Paredes));
+
+        //label3.setVisible(usuario.buscarJugador(Sistema.Paredes));
         //label1.setVisible(this.usuario.buscarJugador(Sistema.Messi));
 
         /*ImageIcon imagen2 = new ImageIcon("Imagenes\\DePaul2.jpg");
@@ -151,6 +177,5 @@ public class Album extends Component {
             }
         });
     }
-
 
 }

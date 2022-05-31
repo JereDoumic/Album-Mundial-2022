@@ -3,7 +3,6 @@ package Clases;
 import Paneles.AbrirSobre;
 import Paneles.Album;
 import Paneles.Login;
-import Paneles.Registro;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -21,6 +20,8 @@ public class Menuu extends Component {
     private JPanel contentPanelMenu;
     private JButton abrirSobreButton;
     private JPanel PanelMenu;
+    private JButton volverButton;
+    private JButton verPerfil;
 
     public Menuu(Usuario usuario) {
         fondo();
@@ -81,13 +82,12 @@ public class Menuu extends Component {
     }
 
     //regionBotones
-    public void actionVerAlbum(JFrame f, Album album){
+    public void actionVerAlbum(JFrame frame, Metodos menu){
         verAlbumButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                f.setContentPane(album.getContentPanelAlbum());
-                album.completarArgentina();
-                f.setVisible(true);
+                frame.setVisible(false);
+                menu.argentina();
             }
         });
     }
@@ -97,6 +97,16 @@ public class Menuu extends Component {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setContentPane(abrirSobre.getContentPanelAbrirSobre());
+                f.setVisible(true);
+            }
+        });
+    }
+
+    public void actionVolver(JFrame f, Login lg){
+        volverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setContentPane(lg.getContenPanelLogin());
                 f.setVisible(true);
             }
         });

@@ -1,16 +1,18 @@
 package Paneles;
 
+
 import Clases.Menuu;
+import Clases.Metodos;
 import Clases.Usuario;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class VentanaPrincipal{
     private Usuario usuario = new Usuario();
 
+    JFrame frame = new JFrame("login");
+
+    private Metodos metodos = new Metodos(usuario, frame);
     private Login lg = new Login();
     private Registro rg = new Registro();
     private Menuu menu = new Menuu(usuario);
@@ -20,9 +22,8 @@ public class VentanaPrincipal{
 
 
 
-
     public VentanaPrincipal() {
-        JFrame frame = new JFrame("login");
+
         //frame.setLocationRelativeTo(null);
         frame.setContentPane(lg.getContenPanelLogin());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,12 +34,13 @@ public class VentanaPrincipal{
         rg.actionVolverButton(frame, lg);
         lg.actionIrAMenuButton(frame, menu);
 
-        menu.actionVerAlbum(frame, album);
+        menu.actionVerAlbum(frame, metodos);
         menu.actionAbrirSobre(frame, sobre);
+        menu.actionVolver(frame, lg);
 
         sobre.actionVolverAMenu(frame, menu);
         sobre.actionAbrir(frame, sobre);
 
-
+        album.actionVolverAlMenu(frame, menu);
     }
 }

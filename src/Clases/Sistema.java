@@ -5,17 +5,26 @@ public final class Sistema {
     public Pais URUGUAY = new Pais();
     public static Pais[] paises = new Pais[32];
 
+
     //regionJugadoresArgentina
     public static Jugador Messi = new Jugador("Lionel Andres", "Messi", "Argentina");
     public static Jugador DePaul = new Jugador("Rodrigo", "DePaul", "Argentina");
     public static Jugador Paredes = new Jugador("Leandro", "Paredes", "Argentina");
+    public static Jugador Otamendi = new Jugador("Nicolas", "Otamendi", "Argentina");
     //endregion
 
     //regionJugadoresUruguay
     public static Jugador Suarez = new Jugador("Luis", "Suarez", "Uruguay");
     public static Jugador Cavani = new Jugador("Edinson", "Cavani", "Uruguay");
     public static Jugador Muslera = new Jugador("Fernando", "Muslera",  "Uruguay");
-    //enregion
+    public static Jugador Gimenez = new Jugador("Jose", "Gimenez",  "Uruguay");
+    //endregion
+
+
+    public static final String BASIC = "Basic";
+    public static final String SILVER = "Silver";
+    public static final String GOLD = "Gold";
+
 
     public Sistema() {
         cargarJugadoresArgentina();
@@ -34,12 +43,14 @@ public final class Sistema {
         ARGENTINA.setJugadores(Messi);
         ARGENTINA.setJugadores(DePaul);
         ARGENTINA.setJugadores(Paredes);
+        ARGENTINA.setJugadores(Otamendi);
     }
 
     public void cargarJugadoresUruguay(){
         URUGUAY.setJugadores(Suarez);
         URUGUAY.setJugadores(Cavani);
         URUGUAY.setJugadores(Muslera);
+        URUGUAY.setJugadores(Gimenez);
     }
 
 
