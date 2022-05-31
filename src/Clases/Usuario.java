@@ -5,10 +5,19 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Usuario extends JFrame{
+public class Usuario implements MetodosDeUsuario{
     LinkedList<Jugador>jugadores = new LinkedList<>();
     LinkedList<Jugador>jugadoresRepetidos = new LinkedList<>();
     private String tipoDeUsuario;  //Basic, Silver o Gold
+    public int contadorDeFiguritas;
+
+    public int getContadorDeFiguritas() {
+        return contadorDeFiguritas;
+    }
+
+    public void setContadorDeFiguritas(int contadorDeFiguritas) {
+        this.contadorDeFiguritas = contadorDeFiguritas;
+    }
 
     public String getTipoDeUsuario() {
         return tipoDeUsuario;
@@ -39,18 +48,20 @@ public class Usuario extends JFrame{
         }
     }
 
-    public Jugador[] abrirSobre(){
-
+    @Override
+    public Jugador[] abrirSobre(int validos) {
         Sistema sistema = new Sistema();
         int i;
         int j;
-        Jugador[] aux = new Jugador[5];
+        Jugador[] aux = new Jugador[validos];
 
-        for(int a = 0; a < 5; a++){
+        for(int a = 0; a < validos; a++){
             Random rand = new Random();
             i = rand.nextInt(0, 2);
-            j = rand.nextInt(0, 3);
+            j = rand.nextInt(0, 4);
             aux[a] = Sistema.paises[i].getJugadores(j);
+            if(!buscarJugador(Sistema.paises[i].getJugadores(j)))
+                this.setContadorDeFiguritas(this.getContadorDeFiguritas() + 1);
             this.agregarJugadores(Sistema.paises[i].getJugadores(j));
         }
         return aux;

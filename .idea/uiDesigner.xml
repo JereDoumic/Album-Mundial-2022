@@ -32,7 +32,7 @@
           <property name="text" value="CheckBox" />
         </initial-values>
       </item>
-      <item class="javax.swing.JLabel" icon="Messi.jpg" removable="false" auto-create-binding="false" can-attach-label="true" is-container="true">
+      <item class="javax.swing.JLabel" icon="" removable="false" auto-create-binding="false" can-attach-label="true" is-container="true">
         <default-constraints vsize-policy="3" hsize-policy="3" anchor="8" fill="0" />
         <initial-values>
           <property name="text" value="Label" />
