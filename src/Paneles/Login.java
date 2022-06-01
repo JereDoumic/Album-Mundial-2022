@@ -1,15 +1,16 @@
 package Paneles;
 
 import Clases.Menuu;
+import Clases.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Login  {
     private JPanel contenPanelLogin;
     private JTextField textField1;
-    private JTextField textField2;
     private JButton irButton;
     private JPasswordField passwordField1;
     private JButton iniciarSesionButton;
@@ -39,6 +40,25 @@ public class Login  {
         });
     }
 
+    public void iniciarSesion(){
+        iniciarSesionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    public Usuario buscarUsuario(ArrayList<Usuario> listUsuarios, Usuario us){
+        for (Usuario u: listUsuarios) {
+            if (u.equals(us)){
+                return u;
+            }
+        }
+        System.out.println("no se encontró usuario");
+        return null;
+    }
+
     public JPasswordField getPasswordField1() {
         return passwordField1;
     }
@@ -63,13 +83,6 @@ public class Login  {
         this.textField1 = textField1;
     }
 
-    public JTextField getTextField2() {
-        return textField2;
-    }
-
-    public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
-    }
 
     public JButton getIrButton() {
         return irButton;

@@ -1,11 +1,14 @@
 package Paneles;
 
 
+import Clases.Cuenta;
 import Clases.Menuu;
 import Clases.Metodos;
 import Clases.Usuario;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class VentanaPrincipal{
     private Usuario usuario = new Usuario();
@@ -21,6 +24,8 @@ public class VentanaPrincipal{
     private JPanel panelPrincipal;
 
 
+    private LinkedList<Cuenta> listAcounts = new LinkedList<Cuenta>();
+
 
     public VentanaPrincipal() {
 
@@ -32,6 +37,7 @@ public class VentanaPrincipal{
 
         lg.actionIrButton(frame, rg);
         rg.actionVolverButton(frame, lg);
+        rg.actionRegisterButton(frame);
         lg.actionIrAMenuButton(frame, menu);
 
         menu.actionVerAlbum(frame, metodos);
