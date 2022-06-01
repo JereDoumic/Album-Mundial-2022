@@ -11,7 +11,7 @@ import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        Reproductor.reproducirCancion();
+        //Reproductor.reproducirCancion();
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
     }
 }
