@@ -1,16 +1,14 @@
 package Paneles;
 
 import Clases.Cuenta;
+import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-public class Registro {
+public class Registro implements Serializable{
     private JPanel contenPanelRegistro;
     private JTextField textName;
     private JTextField textField2;
@@ -49,16 +47,16 @@ public class Registro {
              public void actionPerformed(ActionEvent e) {
                  Cuenta c = new Cuenta(textUsuario.getText(),passwordField1.getText(),textEmail.getText(),textName.getText(),textLastname.getText(),textDni.getText());
                  System.out.println(c);
-                 File file = new File("cuentas.txt");
-                 try {
-                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-                     objectOutputStream.writeObject(c);
-                     objectOutputStream.close();
-                 } catch (IOException ex) {
-                     throw new RuntimeException(ex);
-                 }finally {
-                     System.out.println("guardado correctamente");
-                 }
+//                 File file = new File("cuentas.json");
+//
+//                 try {
+//                     BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+//                     Gson gson = new Gson();
+//                 } catch (IOException ex) {
+//                     throw new RuntimeException(ex);
+//                 }
+
+
                  AnimationLoad val = new AnimationLoad();
              }
          });
