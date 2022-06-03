@@ -1,11 +1,13 @@
 package Paneles;
 
 import Clases.Cuenta;
+import Clases.ManejoArchivos;
 import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PersistenceDelegate;
 import java.io.*;
 
 public class Registro implements Serializable{
@@ -25,7 +27,7 @@ public class Registro implements Serializable{
     private JLabel labelEmail;
     private JLabel labelUsuario;
     private JLabel labelPassword;
-
+    private ManejoArchivos ma = new ManejoArchivos();
     public Registro() {
 
     }
@@ -47,17 +49,15 @@ public class Registro implements Serializable{
              public void actionPerformed(ActionEvent e) {
                  Cuenta c = new Cuenta(textUsuario.getText(),passwordField1.getText(),textEmail.getText(),textName.getText(),textLastname.getText(),textDni.getText());
                  System.out.println(c);
-//                 File file = new File("cuentas.json");
-//
-//                 try {
-//                     BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-//                     Gson gson = new Gson();
-//                 } catch (IOException ex) {
-//                     throw new RuntimeException(ex);
-//                 }
-
+                 ma.cargarCuenta(c);
 
                  AnimationLoad val = new AnimationLoad();
+                 textUsuario.setText("");
+                 passwordField1.setText("");
+                 textEmail.setText("");
+                 textDni.setText("");
+                 textName.setText("");
+                 textLastname.setText("");
              }
          });
      }

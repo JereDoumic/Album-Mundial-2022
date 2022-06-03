@@ -1,12 +1,15 @@
 package Clases;
 
-public class Cuenta extends Persona{
+import java.util.Comparator;
+
+public class Cuenta extends Persona implements Comparable{
     private String usuario;
     private String password;
     private String email;
+
     private int tipo = 0; /// admin = 1
 
-    public Cuenta(String usuario, String password, String email,String name, String lastName, String dni) {
+    public Cuenta(String usuario, String password, String email, String name, String lastName, String dni) {
         super();
         this.usuario = usuario;
         this.password = password;
@@ -16,6 +19,9 @@ public class Cuenta extends Persona{
         this.setDni(dni);
     }
 
+    public Cuenta() {
+
+    }
 
 
     public String getUsuario() {
@@ -42,6 +48,8 @@ public class Cuenta extends Persona{
         this.email = email;
     }
 
+
+
     @Override
     public String toString() {
         return "Cuenta{" +
@@ -50,4 +58,19 @@ public class Cuenta extends Persona{
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int compareTo(Object o) {
+        int result = 1;
+        Cuenta nuevaCuenta = (Cuenta) o;
+        if (this.usuario == ((Cuenta) o).usuario){
+            result=0;
+        }
+        return result;
+    }
+
+
+
+
 }

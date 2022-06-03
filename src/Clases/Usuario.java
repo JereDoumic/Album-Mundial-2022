@@ -11,6 +11,8 @@ public class Usuario implements MetodosDeUsuario{
     private String tipoDeUsuario;  //Basic, Silver o Gold
     public int contadorDeFiguritas;
 
+
+
     public int getContadorDeFiguritas() {
         return contadorDeFiguritas;
     }

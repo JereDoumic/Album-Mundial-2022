@@ -8,6 +8,8 @@ public class Jugador {
     private String pais;
 
 
+
+
     public Jugador(String nombre, String apellido, String pais) {
         this.nombre = nombre;
         this.apellido = apellido;
