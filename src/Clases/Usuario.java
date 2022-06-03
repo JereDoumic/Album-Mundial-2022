@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Usuario extends JFrame{
 
@@ -57,5 +58,60 @@ public class Usuario extends JFrame{
             this.agregarJugadores(Sistema.paises[i].getJugadores(j));
         }
         return aux;
+    }
+
+
+    public Usuario registrarUs() {
+        Scanner sc = new Scanner(System.in);
+        Usuari usurioAux = new Usuari();
+        System.out.println("nombre: ");
+        sc.next(usurioAux.getNombre());
+        System.out.println("apellido: ");
+        sc.next(usurioAux.getApellido());
+        System.out.println("mail: ");
+        sc.next(usurioAux.email);
+        System.out.println("paswerd: ");
+        sc.next(usurioAux.password);
+        if (!buscarUsuario(usurioAux)) {
+            usuarios.add(usurioAux);
+        } else {
+            System.out.println("El usuario ya existe, inicia sesion ");
+        }
+        sc.close();
+        return usurioAux;
+    }
+
+    public boolean buscarUsuario(Usuario us) {
+        for (Usuario aux : usuarios) {
+            if (aux.equals(us)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean buscaUsReg(String mail, String password ){
+        for ( Usuario usAux : usuarios) {
+            if (usAux.email.compareTo(mail) == 0){
+                if (usAux.password.compareTo(password) == 0){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void iniciaSesionCliente() {
+        Scanner sc = new Scanner(System.in);
+        Usuario usurioAux = new Usuario();
+        System.out.println("mail: ");
+        sc.next(usurioAux.email);
+        System.out.println("paswerd: ");
+        sc.next(usurioAux.password);
+        if (buscaUsReg(usurioAux.email, usurioAux.password)) {
+            //continua con menu . . .
+        } else {
+            System.out.println("El usuario no existe, registrate ");
+        }
     }
 }
