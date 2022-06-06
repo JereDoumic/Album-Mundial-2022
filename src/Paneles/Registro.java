@@ -49,7 +49,7 @@ public class Registro implements Serializable{
              @Override
              public void actionPerformed(ActionEvent e) {
                  Cuenta c = new Cuenta(textName.getText(),textLastname.getText(),textDni.getText(),textUsuario.getText(),passwordField1.getText(),textEmail.getText());
-                 //System.out.println(c);
+                 System.out.println(c);
                  ma.cargarCuenta(c);
 
                  AnimationLoad val = new AnimationLoad();
@@ -59,7 +59,7 @@ public class Registro implements Serializable{
                  textDni.setText("");
                  textName.setText("");
                  textLastname.setText("");
-                 ma.leerArchivo();
+
              }
          });
      }

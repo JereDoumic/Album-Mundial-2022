@@ -13,13 +13,36 @@ public class ManejoArchivos implements Serializable {
     public void cargarCuenta(Object obj){
         File file = new File("cuentas.json");
         Gson gson = new Gson();
-
+        BufferedWriter bufferedWriter = null;
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(obj,obj.getClass(), bufferedWriter);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
+        }finally {
+            try {
+                bufferedWriter.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
+    }
+
+
+    public void leerArchivo(){
+        File file = new File("cuentas.json");
+        Gson gson = new Gson();
+
+        try {
+            BufferedReader bufferedReader;
+            bufferedReader = new BufferedReader(new FileReader(file));
+            Object objFromGson = gson.fromJson(bufferedReader,Object.class);
+            System.out.println(objFromGson);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void buscarCuenta(Cuenta c) {
@@ -36,22 +59,5 @@ public class ManejoArchivos implements Serializable {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-
-    public void leerArchivo(){
-        File file = new File("cuentas.json");
-        Gson gson = new Gson();
-
-        try {
-            BufferedReader bufferedReader;
-            bufferedReader = new BufferedReader(new FileReader(file));
-            Object objFromGson = gson.fromJson(bufferedReader,Cuenta.class);
-            System.out.println(objFromGson);
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 }
