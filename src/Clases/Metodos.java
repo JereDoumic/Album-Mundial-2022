@@ -37,6 +37,7 @@ public class Metodos extends JFrame {
         add(content);
         ((JPanel) getContentPane()).setOpaque(false);
 
+        this.setLocationRelativeTo(null);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 

@@ -21,7 +21,7 @@ public class AnimationLoad extends JFrame implements Runnable {
     public void run() {
         for (int i=0;i<=100;i++){
             try {
-                Thread.sleep(5);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

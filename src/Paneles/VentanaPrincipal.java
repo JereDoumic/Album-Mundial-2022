@@ -48,5 +48,6 @@ public class VentanaPrincipal{
         sobre.actionAbrir(frame, sobre);
 
         album.actionVolverAlMenu(frame, menu);
+        frame.setLocationRelativeTo(null);
     }
 }

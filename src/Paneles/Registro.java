@@ -38,6 +38,7 @@ public class Registro implements Serializable{
             public void actionPerformed(ActionEvent e) {
                 f.setTitle("Login");
                 f.setContentPane(lg.getContenPanelLogin());
+                ma.leerArchivo();
                 f.setVisible(true);
             }
         });
@@ -47,8 +48,8 @@ public class Registro implements Serializable{
          registerButton.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-                 Cuenta c = new Cuenta(textUsuario.getText(),passwordField1.getText(),textEmail.getText(),textName.getText(),textLastname.getText(),textDni.getText());
-                 System.out.println(c);
+                 Cuenta c = new Cuenta(textName.getText(),textLastname.getText(),textDni.getText(),textUsuario.getText(),passwordField1.getText(),textEmail.getText());
+                 //System.out.println(c);
                  ma.cargarCuenta(c);
 
                  AnimationLoad val = new AnimationLoad();
@@ -58,6 +59,7 @@ public class Registro implements Serializable{
                  textDni.setText("");
                  textName.setText("");
                  textLastname.setText("");
+                 ma.leerArchivo();
              }
          });
      }
