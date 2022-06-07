@@ -38,7 +38,7 @@ public class Login  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Cuenta c = new Cuenta(textField1.getText(),passwordField1.getText());
-                if (mg.buscarCuenta(c)){
+                if (mg.buscarCuentaEnLL(c)){
                     f.setTitle("Registro");
                     f.setContentPane(menu.getPanel1());
                     f.setVisible(true);
