@@ -6,58 +6,81 @@ import java.io.*;
 import java.util.Comparator;
 
 public class ManejoArchivos implements Serializable {
+    private Gson gson = new Gson();
+    private File file = new File("cuentas.json");
+    private BufferedReader bufferedReader = null;
+    private BufferedWriter bufferedWriter = null;
 
-    public ManejoArchivos(){
+
+    public ManejoArchivos() {
     }
 
-    public void cargarCuenta(Object obj){
+    public void cargarCuenta(Object obj) {
         File file = new File("cuentas.json");
-        Gson gson = new Gson();
-        BufferedWriter bufferedWriter = null;
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(file));
-            gson.toJson(obj,obj.getClass(), bufferedWriter);
+            gson.toJson(obj, obj.getClass(), bufferedWriter);
+
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }finally {
+            System.out.println(ex.getMessage());
+        } finally {
             try {
                 bufferedWriter.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println(e.getMessage());
             }
         }
     }
 
 
-    public void leerArchivo(){
-        File file = new File("cuentas.json");
-        Gson gson = new Gson();
-
+    public Cuenta leerArchivo() {
+        Cuenta objFromGson = null;
         try {
-            BufferedReader bufferedReader;
             bufferedReader = new BufferedReader(new FileReader(file));
-            Object objFromGson = gson.fromJson(bufferedReader,Object.class);
+            objFromGson = gson.fromJson(bufferedReader, Cuenta.class);
             System.out.println(objFromGson);
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public void buscarCuenta(Cuenta c) {
-        File file = new File("cuentas.json");
-        BufferedReader bufferedReader = null;
-        try {
-            bufferedReader = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         } finally {
             try {
                 bufferedReader.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println(e.getMessage());
             }
         }
+        return objFromGson;
     }
+
+    public boolean buscarCuenta(Cuenta c) {
+        Cuenta aux = new Cuenta();
+
+        while (file.canRead()) {
+            try {
+                bufferedReader = new BufferedReader(new FileReader(file));
+
+            aux = gson.fromJson(bufferedReader, Cuenta.class);
+            System.out.println(aux);
+            if (c.equals(aux)) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+                return true;
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }finally {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+        }
+        return false;
+    }
+
 }

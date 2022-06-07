@@ -1,8 +1,9 @@
 package Clases;
 
 import java.util.Comparator;
+import java.util.Objects;
 
-public class Cuenta implements Comparable{
+public class Cuenta{
     private String nombre;
     private String apellido;
     private String dni;
@@ -21,6 +22,11 @@ public class Cuenta implements Comparable{
         this.password = password;
         this.email = email;
 
+    }
+
+    public Cuenta(String usuario, String password) {
+        this.usuario = usuario;
+        this.password = password;
     }
 
     public Cuenta() {
@@ -98,14 +104,15 @@ public class Cuenta implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        int result = 1;
-        Cuenta nuevaCuenta = (Cuenta) o;
-        if (this.usuario == ((Cuenta) o).usuario){
-            result=0;
-        }
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cuenta cuenta = (Cuenta) o;
+        return usuario.equals(cuenta.usuario) && password.equals(cuenta.password);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(usuario, password);
+    }
 }

@@ -1,7 +1,10 @@
 package Paneles;
 
+import Clases.Cuenta;
+import Clases.ManejoArchivos;
 import Clases.Menuu;
 import Clases.Usuario;
+import com.google.gson.stream.MalformedJsonException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +17,7 @@ public class Login  {
     private JButton irButton;
     private JPasswordField passwordField1;
     private JButton iniciarSesionButton;
+    private ManejoArchivos mg= new ManejoArchivos();
 
     public Login(){
     }
@@ -33,21 +37,17 @@ public class Login  {
         iniciarSesionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                f.setTitle("Registro");
-                f.setContentPane(menu.getPanel1());
-                f.setVisible(true);
-            }
-        });
-    }
-
-    public void iniciarSesion(){
-        iniciarSesionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                Cuenta c = new Cuenta(textField1.getText(),passwordField1.getText());
+                if (mg.buscarCuenta(c)){
+                    f.setTitle("Registro");
+                    f.setContentPane(menu.getPanel1());
+                    f.setVisible(true);
+                }
 
             }
         });
     }
+
 
     public Usuario buscarUsuario(ArrayList<Usuario> listUsuarios, Usuario us){
         for (Usuario u: listUsuarios) {

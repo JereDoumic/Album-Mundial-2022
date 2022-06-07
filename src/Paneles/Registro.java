@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.beans.PersistenceDelegate;
 import java.io.*;
 
@@ -48,11 +49,16 @@ public class Registro implements Serializable{
          registerButton.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
+
                  Cuenta c = new Cuenta(textName.getText(),textLastname.getText(),textDni.getText(),textUsuario.getText(),passwordField1.getText(),textEmail.getText());
                  System.out.println(c);
+
+
                  ma.cargarCuenta(c);
 
+
                  AnimationLoad val = new AnimationLoad();
+
                  textUsuario.setText("");
                  passwordField1.setText("");
                  textEmail.setText("");
