@@ -16,15 +16,12 @@ public class VentanaPrincipal{
     private Login lg = new Login();
     private Registro rg = new Registro();
     private Menuu menu = new Menuu(usuario);
-    private Album album = new Album(usuario);
     private AbrirSobre sobre = new AbrirSobre(usuario);
     private JPanel panelPrincipal;
 
 
-
     public VentanaPrincipal() {
 
-        //frame.setLocationRelativeTo(null);
         frame.setContentPane(lg.getContenPanelLogin());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -41,6 +38,6 @@ public class VentanaPrincipal{
         sobre.actionVolverAMenu(frame, menu);
         sobre.actionAbrir(frame, sobre);
 
-        album.actionVolverAlMenu(frame, menu);
+        frame.setLocationRelativeTo(null);
     }
 }

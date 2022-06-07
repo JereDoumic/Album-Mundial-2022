@@ -12,6 +12,9 @@ import java.util.Vector;
 public class Main {
     public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         //Reproductor.reproducirCancion();
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        //VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        Usuario usuario = new Usuario();
+        usuario.guardarFiguritaEnArchivo(Sistema.Messi);
+        usuario.leerArchivoDeFiguritas();
     }
 }

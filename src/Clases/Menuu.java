@@ -1,7 +1,6 @@
 package Clases;
 
 import Paneles.AbrirSobre;
-import Paneles.Album;
 import Paneles.Login;
 
 import javax.imageio.ImageIO;
