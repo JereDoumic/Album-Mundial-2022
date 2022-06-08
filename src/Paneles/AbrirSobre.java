@@ -1,9 +1,6 @@
 package Paneles;
 
-import Clases.Jugador;
-import Clases.Menuu;
-import Clases.Sistema;
-import Clases.Usuario;
+import Clases.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -74,61 +71,70 @@ public class AbrirSobre {
         abrirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(usuario.getContadorDeFiguritas() < 20){
-                    Jugador[] aux = usuario.abrirSobre(4);
+                if(usuario.puedoAbrirSobre){
+                    if(usuario.getContadorDeFiguritas() < 20){
+                        Jugador[] aux = usuario.abrirSobre(4);
 
-                    ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
-                    label1.setIcon(imagen1);
+                        ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
+                        label1.setIcon(imagen1);
 
-                    ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
-                    label2.setIcon(imagen2);
+                        ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
+                        label2.setIcon(imagen2);
 
-                    ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
-                    label3.setIcon(imagen3);
+                        ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
+                        label3.setIcon(imagen3);
 
-                    ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
-                    label4.setIcon(imagen4);
+                        ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
+                        label4.setIcon(imagen4);
+
+                        TimerUsuario.timerUsuario(usuario, abrirButton);
+                    }
+                    if(usuario.getContadorDeFiguritas() >= 20 && usuario.getContadorDeFiguritas() < 40){
+                        Jugador[] aux = usuario.abrirSobre(5);
+
+                        ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
+                        label1.setIcon(imagen1);
+
+                        ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
+                        label2.setIcon(imagen2);
+
+                        ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
+                        label3.setIcon(imagen3);
+
+                        ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
+                        label4.setIcon(imagen4);
+
+                        ImageIcon imagen5 = new ImageIcon("Imagenes\\" +  aux[4].getPais() + "\\" + aux[4].getApellido() + "2.jpg");
+                        label5.setIcon(imagen5);
+
+                        TimerUsuario.timerUsuario(usuario, abrirButton);
+                    }
+                    if(usuario.getContadorDeFiguritas() >= 40){
+                        Jugador[] aux = usuario.abrirSobre(6);
+
+                        ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
+                        label1.setIcon(imagen1);
+
+                        ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
+                        label2.setIcon(imagen2);
+
+                        ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
+                        label3.setIcon(imagen3);
+
+                        ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
+                        label4.setIcon(imagen4);
+
+                        ImageIcon imagen5 = new ImageIcon("Imagenes\\" +  aux[4].getPais() + "\\" + aux[4].getApellido() + "2.jpg");
+                        label5.setIcon(imagen5);
+
+                        ImageIcon imagen6 = new ImageIcon("Imagenes\\" +  aux[5].getPais() + "\\" + aux[5].getApellido() + "2.jpg");
+                        label6.setIcon(imagen5);
+
+                        TimerUsuario.timerUsuario(usuario, abrirButton);
+                    }
                 }
-                if(usuario.getContadorDeFiguritas() >= 20 && usuario.getContadorDeFiguritas() < 40){
-                    Jugador[] aux = usuario.abrirSobre(5);
-
-                    ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
-                    label1.setIcon(imagen1);
-
-                    ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
-                    label2.setIcon(imagen2);
-
-                    ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
-                    label3.setIcon(imagen3);
-
-                    ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
-                    label4.setIcon(imagen4);
-
-                    ImageIcon imagen5 = new ImageIcon("Imagenes\\" +  aux[4].getPais() + "\\" + aux[4].getApellido() + "2.jpg");
-                    label5.setIcon(imagen5);
-                }
-                if(usuario.getContadorDeFiguritas() >= 40){
-                    Jugador[] aux = usuario.abrirSobre(6);
-
-                    ImageIcon imagen1 = new ImageIcon("Imagenes\\" + aux[0].getPais() + "\\" + aux[0].getApellido() + "2.jpg");
-                    label1.setIcon(imagen1);
-
-                    ImageIcon imagen2 = new ImageIcon("Imagenes\\" +  aux[1].getPais() + "\\" + aux[1].getApellido() + "2.jpg");
-                    label2.setIcon(imagen2);
-
-                    ImageIcon imagen3 = new ImageIcon("Imagenes\\" + aux[2].getPais() + "\\" + aux[2].getApellido() + "2.jpg");
-                    label3.setIcon(imagen3);
-
-                    ImageIcon imagen4 = new ImageIcon("Imagenes\\" +  aux[3].getPais() + "\\" + aux[3].getApellido() + "2.jpg");
-                    label4.setIcon(imagen4);
-
-                    ImageIcon imagen5 = new ImageIcon("Imagenes\\" +  aux[4].getPais() + "\\" + aux[4].getApellido() + "2.jpg");
-                    label5.setIcon(imagen5);
-
-                    ImageIcon imagen6 = new ImageIcon("Imagenes\\" +  aux[5].getPais() + "\\" + aux[5].getApellido() + "2.jpg");
-                    label6.setIcon(imagen5);
-                }
-
+                else
+                    System.out.println("Debe esperar para abrir un sobre");
             }
         });
     }

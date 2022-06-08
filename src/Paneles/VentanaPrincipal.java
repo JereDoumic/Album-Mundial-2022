@@ -17,6 +17,8 @@ public class VentanaPrincipal{
     private Registro rg = new Registro();
     private Menuu menu = new Menuu(usuario);
     private AbrirSobre sobre = new AbrirSobre(usuario);
+    private VerPefil perfil = new VerPefil(usuario);
+    private FiguritasRepetidas figuritasRepetidas = new FiguritasRepetidas(usuario);
     private JPanel panelPrincipal;
 
 
@@ -34,9 +36,15 @@ public class VentanaPrincipal{
         menu.actionVerAlbum(frame, metodos);
         menu.actionAbrirSobre(frame, sobre);
         menu.actionVolver(frame, lg);
+        menu.actionVerPerfil(frame, perfil);
 
         sobre.actionVolverAMenu(frame, menu);
         sobre.actionAbrir(frame, sobre);
+
+        perfil.actionVolver(frame, menu);
+        perfil.actionVerFiguritasRepetidas(frame, figuritasRepetidas);
+
+        figuritasRepetidas.actionVolver(frame, perfil);
 
         frame.setLocationRelativeTo(null);
     }
