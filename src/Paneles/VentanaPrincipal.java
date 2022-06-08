@@ -31,6 +31,7 @@ public class VentanaPrincipal{
 
         lg.actionIrButton(frame, rg);
         rg.actionVolverButton(frame, lg);
+        rg.actionRegisterButton(frame);
         lg.actionIrAMenuButton(frame, menu);
 
         menu.actionVerAlbum(frame, metodos);

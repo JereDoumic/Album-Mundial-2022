@@ -108,6 +108,8 @@ public class Menuu extends Component {
             public void actionPerformed(ActionEvent e) {
                 f.setContentPane(lg.getContenPanelLogin());
                 f.setVisible(true);
+                f.setBounds(0,0,800,400);
+                f.setLocationRelativeTo(null);
             }
         });
     }

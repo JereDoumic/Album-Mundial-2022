@@ -18,5 +18,6 @@ public class Main {
         usuario.guardarFiguritaEnArchivo(usuario.jugadoresArchivo);
         usuario.leerArchivoDeFiguritas();*/
         //System.out.println(usuario.buscarJugadorEnArchivo(Sistema.Suarez));
+
     }
 }
