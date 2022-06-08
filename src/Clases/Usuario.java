@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
 import java.io.*;
+import java.lang.reflect.Type;
+import java.sql.Array;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -17,6 +19,8 @@ public class Usuario implements MetodosDeUsuario, Serializable{
     LinkedList<Jugador>jugadoresRepetidos = new LinkedList<>();
     private String tipoDeUsuario;  //Basic, Silver o Gold
     public int contadorDeFiguritas;
+    public boolean puedoAbrirSobre = true;
+    public int[] jugadoresArchivo = new int[78];
 
 
 
@@ -26,6 +30,14 @@ public class Usuario implements MetodosDeUsuario, Serializable{
 
     public void setContadorDeFiguritas(int contadorDeFiguritas) {
         this.contadorDeFiguritas = contadorDeFiguritas;
+    }
+
+    public LinkedList<Jugador> getJugadoresRepetidos() {
+        return jugadoresRepetidos;
+    }
+
+    public void setJugadoresRepetidos(LinkedList<Jugador> jugadoresRepetidos) {
+        this.jugadoresRepetidos = jugadoresRepetidos;
     }
 
     public String getTipoDeUsuario() {
@@ -39,27 +51,18 @@ public class Usuario implements MetodosDeUsuario, Serializable{
     public Usuario() {
     }
 
-    public void guardarFiguritaEnArchivo(Jugador jugador){
-        File file = new File("usuario.json");
+    public void guardarFiguritaEnArchivo(int[] arreglo){
 
-        BufferedWriter bufferedWriter = null;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(file));
+            FileOutputStream fileOutputStream = new FileOutputStream("usuario.json"); // podemos agregar datos
+            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutputStream);
+            objectOutput.writeObject(jugadoresArchivo);
 
-            int aux = jugador.getFiguritaNro();
-
-            Gson gson = new Gson();
-
-            gson.toJson(aux, Integer.class, bufferedWriter);
+            objectOutput.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                bufferedWriter.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
         }
+
     }
 
     public void leerArchivoDeFiguritas() {
@@ -72,8 +75,31 @@ public class Usuario implements MetodosDeUsuario, Serializable{
         }
 
         Gson gson = new Gson();
-        int aux = gson.fromJson(bufferedReader, Integer.class);
+        int[] aux = gson.fromJson((Reader) bufferedReader, (Type) Integer.class);
         System.out.println(aux);
+    }
+
+    public boolean buscarJugadorEnArchivo(Jugador jugador){
+        File file = new File("usuario.json");
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(file));
+            while (bufferedReader != null){
+                Gson gson = new Gson();
+                int aux = gson.fromJson(bufferedReader, Integer.class);
+                if(jugador.getFiguritaNro() == aux)
+                    return true;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return false;
     }
 
     public boolean buscarJugador(Jugador jugador){
@@ -96,20 +122,24 @@ public class Usuario implements MetodosDeUsuario, Serializable{
 
     @Override
     public Jugador[] abrirSobre(int validos) {
-        Sistema sistema = new Sistema();
         int i;
         int j;
         Jugador[] aux = new Jugador[validos];
+        Sistema sistema = new Sistema();
 
-        for(int a = 0; a < validos; a++){
+
+        for(int a = 0; a < validos; a++) {
             Random rand = new Random();
             i = rand.nextInt(0, 5);
             j = rand.nextInt(0, 6);
             aux[a] = Sistema.paises[i].getJugadores(j);
-            if(!buscarJugador(Sistema.paises[i].getJugadores(j)))
+            if (!buscarJugador(Sistema.paises[i].getJugadores(j)))
                 this.setContadorDeFiguritas(this.getContadorDeFiguritas() + 1);
             this.agregarJugadores(Sistema.paises[i].getJugadores(j));
         }
+
+        this.puedoAbrirSobre = false;
+        //TimerUsuario.timerUsuario(this);
         return aux;
     }
 

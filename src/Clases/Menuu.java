@@ -2,6 +2,7 @@ package Clases;
 
 import Paneles.AbrirSobre;
 import Paneles.Login;
+import Paneles.VerPefil;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -106,6 +107,17 @@ public class Menuu extends Component {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setContentPane(lg.getContenPanelLogin());
+                f.setVisible(true);
+            }
+        });
+    }
+
+    public void actionVerPerfil(JFrame f, VerPefil perfil){
+        verPerfil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setContentPane(perfil.getVerPefilPanel());
+                perfil.cargarText();
                 f.setVisible(true);
             }
         });
