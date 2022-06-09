@@ -14,6 +14,7 @@ public class AnimationLoad extends JFrame implements Runnable {
         setVisible(true);
         Thread hilo =new Thread(this::run);
         hilo.start();
+        setLocationRelativeTo(null);
 
     }
 

@@ -42,6 +42,8 @@ public class Login  {
                     f.setTitle("Registro");
                     f.setContentPane(menu.getPanel1());
                     f.setVisible(true);
+                    f.setBounds(0,0,1600,900);
+                    f.setLocationRelativeTo(null);
 
                     textField1.setText("");
                     passwordField1.setText("");

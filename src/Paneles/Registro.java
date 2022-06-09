@@ -60,8 +60,8 @@ public class Registro implements Serializable{
 
                      Cuenta c = new Cuenta(textName.getText(), textLastname.getText(), textDni.getText(), textUsuario.getText(), passwordField1.getText(), textEmail.getText());
                      aux.add(c);
-                     System.out.println(c);
-                     if (!ma.buscarCuenta(c)) {
+
+                     if (ma.buscarCuenta(c)) {
                          ma.cargarListaDeCuentasAarchivo(aux);
                      }else{
                          System.out.println("el usuario ya existe");

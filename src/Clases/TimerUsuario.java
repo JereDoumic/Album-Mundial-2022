@@ -20,6 +20,7 @@ public class TimerUsuario {
                         usuario.puedoAbrirSobre = true;
                         tic = 10;
                         boton.setText("Abrir");
+                        timer.cancel();
                         return;
                     }
                     boton.setText(String.valueOf(tic));

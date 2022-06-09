@@ -86,7 +86,7 @@ public class Metodos extends JFrame {
         getLayeredPane().add(label5, new Integer(Integer.MIN_VALUE));
         label5.setBounds(305, 570, imagen5.getIconWidth(), imagen5.getIconHeight());
         label5.setSize(new Dimension(180, 230));
-        label5.setVisible(this.usuario.buscarJugador(Sistema.DiMaria));
+        label5.setVisible(this.usuario.buscarJugador(Sistema.Acunia));
 
 
         JButton botonVolver = new JButton();
@@ -144,6 +144,20 @@ public class Metodos extends JFrame {
                 botonSiguiente.setVisible(false);
                 setVisible(false);
                 frame.setVisible(true);
+            }
+        });
+        botonAnterior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label1.setVisible(false);
+                label2.setVisible(false);
+                label3.setVisible(false);
+                label4.setVisible(false);
+                label5.setVisible(false);
+                botonVolver.setVisible(false);
+                botonAnterior.setVisible(false);
+                botonSiguiente.setVisible(false);
+                mexico();
             }
         });
 

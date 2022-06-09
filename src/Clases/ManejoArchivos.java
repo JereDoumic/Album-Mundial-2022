@@ -86,10 +86,11 @@ public class ManejoArchivos<T> {
         listCuentas = leerArchivosAlista();
 
         for (Object p: listCuentas) {
-            if (p instanceof Cuenta){
-                if (c.equals(p)){
-                    return true;
+            if (p instanceof Cuenta && c.equals(p) ){
+                if (c.getDni() != null && c.getDni().equals(((Cuenta) p).getDni())){
+                    return false;
                 }
+                return true;
             }
         }
         return false;
