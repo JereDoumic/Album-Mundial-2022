@@ -6,14 +6,17 @@ public class Jugador {
     private String nombre;
     private String apellido;
     private String pais;
+    private int figuritaNro;
 
 
-
-
-    public Jugador(String nombre, String apellido, String pais) {
+    public Jugador(String nombre, String apellido, String pais, int figuritaNro) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.pais = pais;
+        this.figuritaNro = figuritaNro;
+    }
+
+    public Jugador() {
     }
 
     public Jugador(String apellido) {
@@ -42,6 +45,10 @@ public class Jugador {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public int getFiguritaNro() {
+        return figuritaNro;
     }
 
     @Override

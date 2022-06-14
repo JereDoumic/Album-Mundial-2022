@@ -1,6 +1,7 @@
 package Clases;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Cuenta{
@@ -90,17 +91,18 @@ public class Cuenta{
     }
 
 
+
     @Override
     public String toString() {
-        return "Cuenta{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", tipo=" + tipo +
-                '}';
+        return "Usuario: \n" +
+                "Nombre: " + nombre +
+                " y Apellido: " + apellido + "\n" +
+                "Dni: " + dni + "\n" +
+                "Usuario: " + usuario +
+                " | Password: " + password + "\n" +
+                "Email: " + email + "\n" +
+                "Tipo: " + tipo + "\n" +
+                "********************************\n";
     }
 
     @Override
@@ -108,11 +110,11 @@ public class Cuenta{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cuenta cuenta = (Cuenta) o;
-        return usuario.equals(cuenta.usuario) && password.equals(cuenta.password);
+        return Objects.equals(dni, cuenta.dni) && Objects.equals(usuario, cuenta.usuario) && Objects.equals(password, cuenta.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(usuario, password);
+        return Objects.hash(dni, usuario, password);
     }
 }

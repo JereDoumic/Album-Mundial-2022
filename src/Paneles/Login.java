@@ -1,28 +1,61 @@
 package Paneles;
 
-import Clases.Cuenta;
-import Clases.ManejoArchivos;
-import Clases.Menuu;
-import Clases.Usuario;
+import Clases.*;
+import com.google.gson.Gson;
 import com.google.gson.stream.MalformedJsonException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class Login  {
+public class Login {
     private JPanel contenPanelLogin;
     private JTextField textField1;
     private JButton irButton;
     private JPasswordField passwordField1;
     private JButton iniciarSesionButton;
-    private ManejoArchivos mg= new ManejoArchivos();
+    private JPanel panelLogin;
 
-    public Login(){
+
+    private ManejoArchivos mg = new ManejoArchivos();
+
+    public Login() {
+        textField1.setText("");
+        passwordField1.setText("");
+        Thread hilo = new Thread(this::run);
+        fondoPanel();
+        fondoBotones(iniciarSesionButton,"Imagenes\\botonInicSesion.png");
+        fondoBotones(irButton,"Imagenes\\botonRegistrarse.png");
+        hilo.start();
     }
 
-    public void actionIrButton(JFrame f,Registro rg){
+    public void run() {
+        try {
+            while (true) {
+                if (textField1.getText().isEmpty() || passwordField1.getText().isEmpty()) {
+                    iniciarSesionButton.setEnabled(false);
+                }else {
+                    iniciarSesionButton.setEnabled(true);
+                }
+            }
+        }catch (Exception io){
+            System.out.println(io);
+        }
+    }
+
+
+    public void actionIrButton(JFrame f, Registro rg) {
         irButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,15 +66,37 @@ public class Login  {
         });
     }
 
-    public void actionIrAMenuButton(JFrame f, Menuu menu){
+    public void actionIrAMenuButton(JFrame f, Menuu menu) {
         iniciarSesionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cuenta c = new Cuenta(textField1.getText(),passwordField1.getText());
-                if (mg.buscarCuentaEnLL(c)){
+                Cuenta c = new Cuenta();
+                c = buscarCuentaPorUsuario(textField1.getText());
+
+                if (mg.buscarCuenta(c) && c.getTipo() == 0) {
                     f.setTitle("Registro");
                     f.setContentPane(menu.getPanel1());
-                    f.setVisible(true);
+                    f.setVisible(false);
+
+                    mg.archivoTemporal(c);
+                    Usuario usu = new Usuario();
+                    usu.setUsuario(c.getUsuario());
+
+                    InicProgram ip = new InicProgram(usu);
+
+                    textField1.setText("");
+                    passwordField1.setText("");
+
+                } else if (c.getTipo() == 1) {
+                    f.setTitle("Administrador");
+                    f.setContentPane(menu.getPanel1());
+                    f.setVisible(false);
+                    Administrador administrador = new Administrador();
+                }
+                else {
+
+                    Cartel car = new Cartel("Usuario no Registrado");
+
                 }
 
             }
@@ -49,14 +104,21 @@ public class Login  {
     }
 
 
-    public Usuario buscarUsuario(ArrayList<Usuario> listUsuarios, Usuario us){
-        for (Usuario u: listUsuarios) {
-            if (u.equals(us)){
-                return u;
+    public Cuenta buscarCuentaPorUsuario(String usuario) {
+        ManejoArchivos manejoArchivos = new ManejoArchivos();
+        LinkedList<Cuenta> listCuentas = new LinkedList<>();
+        listCuentas = manejoArchivos.leerArchivosAlista();
+
+        Cuenta aux = new Cuenta();
+
+        for (Cuenta cuenta: listCuentas) {
+            if (cuenta instanceof Cuenta){
+                if (usuario.compareTo(((Cuenta) cuenta).getUsuario()) == 0){
+                    aux = cuenta;
+                }
             }
         }
-        System.out.println("no se encontró usuario");
-        return null;
+        return aux;
     }
 
     public JPasswordField getPasswordField1() {
@@ -90,6 +152,41 @@ public class Login  {
 
     public void setIrButton(JButton irButton) {
         this.irButton = irButton;
+    }
+
+    public JPanel getPanelLogin() {
+        return panelLogin;
+    }
+
+    public void setPanelLogin(JPanel panelLogin) {
+        this.panelLogin = panelLogin;
+    }
+
+    public void fondo (){
+        try{
+            Menuu.fondoPanel fondo = new Menuu.fondoPanel(ImageIO.read(new File("Imagenes\\FondoLogin.png")));
+            getPanelLogin().setBorder(fondo);
+        }catch (IOException ex){
+            JOptionPane.showMessageDialog(getPanelLogin(),ex.getMessage());
+        }
+    }
+
+    public void fondoPanel(){
+        try{
+            Menuu.fondoPanel fondo = new Menuu.fondoPanel(ImageIO.read(new File("Imagenes\\FondoLogin.png")));
+            getPanelLogin().setBorder(fondo);
+        }catch (IOException ex){
+            JOptionPane.showMessageDialog(getPanelLogin(),ex.getMessage());
+        }
+    }
+
+    public void fondoBotones (JButton boton, String ruta){
+        try{
+            Menuu.fondoPanel fondo = new Menuu.fondoPanel(ImageIO.read(new File(ruta)));
+            boton.setBorder(fondo);
+        }catch (IOException ex){
+            JOptionPane.showMessageDialog(boton,ex.getMessage());
+        }
     }
 
 }

@@ -3,7 +3,7 @@ package Paneles;
 import javax.swing.*;
 
 public class AnimationLoad extends JFrame implements Runnable {
-    private JPanel contentPanelValidacion;
+    private JPanel contentPanelValidation;
     private JProgressBar progressBar1;
 
 
@@ -14,6 +14,7 @@ public class AnimationLoad extends JFrame implements Runnable {
         setVisible(true);
         Thread hilo =new Thread(this::run);
         hilo.start();
+        setLocationRelativeTo(null);
 
     }
 
@@ -33,11 +34,11 @@ public class AnimationLoad extends JFrame implements Runnable {
 
 
     public JPanel getContentPanelValidacion() {
-        return contentPanelValidacion;
+        return contentPanelValidation;
     }
 
     public void setContentPanelValidacion(JPanel contentPanelValidacion) {
-        this.contentPanelValidacion = contentPanelValidacion;
+        this.contentPanelValidation = contentPanelValidacion;
     }
 
     public JProgressBar getProgressBar1() {
