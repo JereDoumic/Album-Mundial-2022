@@ -23,7 +23,6 @@ public class VentanaPrincipal{
 
 
     public VentanaPrincipal() {
-
         frame.setContentPane(lg.getContenPanelLogin());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -34,19 +33,8 @@ public class VentanaPrincipal{
         rg.actionRegisterButton(frame);
         lg.actionIrAMenuButton(frame, menu);
 
-        menu.actionVerAlbum(frame, metodos);
-        menu.actionAbrirSobre(frame, sobre);
-        menu.actionVolver(frame, lg);
-        menu.actionVerPerfil(frame, perfil);
-
-        sobre.actionVolverAMenu(frame, menu);
-        sobre.actionAbrir(frame, sobre);
-
-        perfil.actionVolver(frame, menu);
-        perfil.actionVerFiguritasRepetidas(frame, figuritasRepetidas);
-
-        figuritasRepetidas.actionVolver(frame, perfil);
 
         frame.setLocationRelativeTo(null);
+
     }
 }

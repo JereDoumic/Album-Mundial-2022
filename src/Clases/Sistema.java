@@ -7,6 +7,7 @@ public final class Sistema {
     public Pais FRANCIA = new Pais();
     public Pais MEXICO = new Pais();
     public static Pais[] paises = new Pais[32];
+    public Jugador[] jugadores = {EscudoArgentina, Messi, DePaul, Acunia, Otamendi, DiMaria, EscudoUruguay, Suarez, Cavani, Muslera, Gimenez, Godin, EscudoEspania, DeGea, Carvajal, Morata, Busquets, Alcantara, EscudoFrancia, Lloris, Mbappe, Kante, Pogba, Varane, EscudoMexico, Guardado, Herrera, Lozano, Moreno, Ochoa};
 
 
     //regionJugadoresArgentina
@@ -78,7 +79,6 @@ public final class Sistema {
     }
 
 
-
     public void cargarJugadoresArgentina(){
         ARGENTINA.setJugadores(Messi);
         ARGENTINA.setJugadores(DePaul);
@@ -124,5 +124,12 @@ public final class Sistema {
         MEXICO.setJugadores(Guardado);
     }
 
-
+    public String retornarRutaDeJugadorPorNumeroDeFigurita(int numeroDeFigurita){
+        String rutaJugador = "no encontrado";
+        for (Jugador aux: jugadores) {
+            if(aux.getFiguritaNro() == numeroDeFigurita)
+                rutaJugador = "Imagenes\\" + aux.getPais() + "\\" + aux.getApellido() + "2.jpg";
+        }
+        return rutaJugador;
+    }
 }

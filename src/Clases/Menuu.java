@@ -2,6 +2,7 @@ package Clases;
 
 import Paneles.AbrirSobre;
 import Paneles.Login;
+import Paneles.VentanaPrincipal;
 import Paneles.VerPefil;
 
 import javax.imageio.ImageIO;
@@ -106,10 +107,8 @@ public class Menuu extends Component {
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                f.setContentPane(lg.getContenPanelLogin());
-                f.setVisible(true);
-                f.setBounds(0,0,800,400);
-                f.setLocationRelativeTo(null);
+                f.setVisible(false);
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
             }
         });
     }

@@ -7,6 +7,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class ManejoArchivos<T> {
     private Gson gson = new Gson();
@@ -20,15 +21,17 @@ public class ManejoArchivos<T> {
 
 
     public void crearArchivo() {
-        this.file = new File("Archi.json");
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
-    public void cargarListaDeCuentasAarchivo(LinkedList<Object> obj) {
-        if (!file.exists()) {
-            System.out.println("se puedo Crear");
-            crearArchivo();
-        }
-
+    public void cargarListaDeCuentasAarchivo(LinkedList<T> obj) {
+        crearArchivo();
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(obj, obj.getClass(), bufferedWriter);
@@ -47,11 +50,33 @@ public class ManejoArchivos<T> {
     }
 
 
+    public void archivoTemporal(Cuenta cu){
+        File temp = new File("temporal.json");
+        Gson gson = new Gson();
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter (new FileWriter(temp));
+            //temp.createNewFile();
+            gson.toJson(cu,Cuenta.class,bw);
+            temp.deleteOnExit();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }finally {
+            try {
+                bw.close();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+
+
+
     public LinkedList<Cuenta> leerArchivosAlista() {
         LinkedList<Cuenta> cuentas = new LinkedList<>();
         if (!file.exists()) {
             crearArchivo();
-            System.out.println("Ingrese nuevamente");
         }else{
             Type type = new TypeToken<LinkedList<Cuenta>>() {}.getType();
             try {
@@ -82,19 +107,34 @@ public class ManejoArchivos<T> {
     }
 
     public boolean buscarCuenta(Cuenta c) {
-        LinkedList<Cuenta> listCuentas = new LinkedList<>();
+        LinkedList<Cuenta> listCuentas;
         listCuentas = leerArchivosAlista();
 
         for (Object p: listCuentas) {
-            if (p instanceof Cuenta && c.equals(p) ){
-                if (c.getDni() != null && c.getDni().equals(((Cuenta) p).getDni())){
-                    return false;
+            if (p instanceof Cuenta){
+                if (Objects.equals(((Cuenta) p).getUsuario(), c.getUsuario()) && Objects.equals(((Cuenta) p).getPassword(), c.getPassword())){
+                    return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean buscarCuentaParaRegistro(Cuenta c){
+        LinkedList<Cuenta> listCuentas;
+        listCuentas = leerArchivosAlista();
+
+        for (Cuenta lc: listCuentas){
+            if (Objects.equals(lc.getDni(), c.getDni())){
+                return true;
+            }
+            if (Objects.equals(lc.getUsuario(), c.getUsuario())){
                 return true;
             }
         }
         return false;
     }
+
 
     public File getFile() {
         return file;

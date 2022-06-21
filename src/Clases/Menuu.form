@@ -26,6 +26,7 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Bradley Hand ITC" size="20" style="1"/>
               <text value="Abrir Sobre"/>
             </properties>
           </component>
@@ -38,6 +39,7 @@
             <properties>
               <alignmentX value="0.5"/>
               <borderPainted value="true"/>
+              <font name="Bradley Hand ITC" size="20" style="1"/>
               <hideActionText value="false"/>
               <horizontalTextPosition value="11"/>
               <iconTextGap value="4"/>
@@ -56,6 +58,7 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Bradley Hand ITC" size="20" style="1"/>
               <text value="Volver"/>
             </properties>
           </component>
@@ -66,6 +69,7 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Bradley Hand ITC" size="20" style="1"/>
               <horizontalTextPosition value="0"/>
               <text value="Ver Perfil"/>
             </properties>

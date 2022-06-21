@@ -10,7 +10,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class Reproductor extends JFrame{
+public class Reproductor{
 
 
     private static AudioClip ac;
@@ -20,23 +20,4 @@ public class Reproductor extends JFrame{
          sonido.open(AudioSystem.getAudioInputStream(new File("Musica\\Hayya.wav")));
          sonido.start();
      }
-
-    public void reproducir() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        this.setTitle("QATAR 2022");
-        setSize(1600, 900);
-
-        JPanel content = new JPanel();
-        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-        content.setOpaque(false);
-
-        setLayout(new FlowLayout());
-        add(content);
-        ((JPanel) getContentPane()).setOpaque(false);
-
-        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
-        reproducirCancion();
-
-    }
 }

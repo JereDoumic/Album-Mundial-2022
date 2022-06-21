@@ -16,6 +16,9 @@ public class Jugador {
         this.figuritaNro = figuritaNro;
     }
 
+    public Jugador() {
+    }
+
     public Jugador(String apellido) {
         this.apellido = apellido;
     }

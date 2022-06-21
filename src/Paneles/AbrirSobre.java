@@ -133,8 +133,9 @@ public class AbrirSobre {
                         TimerUsuario.timerUsuario(usuario, abrirButton);
                     }
                 }
-                else
-                    System.out.println("Debe esperar para abrir un sobre");
+                else {
+                    Cartel cartel = new Cartel("Debe esperar " + TimerUsuario.tic + " seg. para su próximo sobre");
+                }
             }
         });
     }

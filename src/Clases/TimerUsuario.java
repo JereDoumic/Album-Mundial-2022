@@ -24,7 +24,6 @@ public class TimerUsuario {
                         return;
                     }
                     boton.setText(String.valueOf(tic));
-                    System.out.println(tic);
                     tic--;
                 }
             }
